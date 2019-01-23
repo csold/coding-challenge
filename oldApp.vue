@@ -1,21 +1,14 @@
-<!-- <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/Page1">Home</router-link>
-      <router-link to="/Page2">About</router-link>
-    </div>
-    <router-view/>
-  </div>
-</template> -->
-
 <template>
   <div id="app">
     <!-- <ContentFrame content="Content Placeholder">{{  }}</ContentFrame> -->
     <div class='box'>
-      <router-view class='content' />
+      <div class='content'>
+        <P1Content v-if="onFirstPage" />
+        <P2Content v-else />
+      </div>
       <div class='nav-buttons'>
-        <router-link class='button' to="/Page1">Back</router-link>
-        <router-link class='button' to="/Page2">Next</router-link>
+        <div class='button' v-on:click="onFirstPage=true">Back</div>
+        <div class='button' v-on:click="onFirstPage=false">Next</div>
       </div>
     </div>
   </div>
@@ -23,20 +16,20 @@
 
 <script>
 // import ContentFrame from './components/ContentFrame.vue'
-// import P1Content from './components/P1Content.vue'
-// import P2Content from './components/P2Content.vue'
+import P1Content from './components/P1Content.vue'
+import P2Content from './components/P2Content.vue'
 
 export default {
   name: 'app',
-  // components: {
-  //   P1Content,
-  //   P2Content
-  // },
-  // data () {
-  //   return {
-  //     onFirstPage: true
-  //   }
-  // }
+  components: {
+    P1Content,
+    P2Content
+  },
+  data () {
+    return {
+      onFirstPage: true
+    }
+  }
 }
 </script>
 
@@ -70,6 +63,5 @@ export default {
     width: 300px;
     text-align: center;
     display: inline;
-    text-decoration: none
   }
 </style>
