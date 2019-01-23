@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ContentFrame content="Content Placeholder"/>
+    <!-- <keep-alive></keep-alive> Keeps data from components in local memory -->
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ContentFrame from './components/ContentFrame.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    ContentFrame
   }
 }
 </script>
@@ -21,8 +21,5 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
