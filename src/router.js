@@ -10,12 +10,12 @@ export default new Router({
   routes: [
     {
       path: '/Page1',
-      name: 'home',
+      name: 'page1',
       component: Page1
     },
     {
       path: '/Page2',
-      name: 'about',
+      name: 'page2',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.

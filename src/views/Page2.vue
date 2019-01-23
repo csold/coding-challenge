@@ -15,7 +15,4 @@ export default {
 </script>
 
 <style scoped>
-  .content {
-    background-color: blue;
-  }
 </style>
