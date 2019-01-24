@@ -5,10 +5,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-
+    users: ''
   },
   mutations: {
-
+    addUsers(state, payload) {
+      state.users = payload
+      console.log(payload)
+    }
   },
   actions: {
 

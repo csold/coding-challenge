@@ -9,7 +9,7 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/Page1',
+      path: '/',
       name: 'page1',
       component: Page1
     },

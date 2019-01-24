@@ -14,7 +14,7 @@
     <div class='box'>
       <router-view class='content' />
       <div class='nav-buttons'>
-        <router-link class='button' to="/Page1">Back</router-link>
+        <router-link class='button' to="/">Back</router-link>
         <router-link class='button' to="/Page2">Next</router-link>
       </div>
     </div>
@@ -25,6 +25,12 @@
 // import ContentFrame from './components/ContentFrame.vue'
 // import P1Content from './components/P1Content.vue'
 // import P2Content from './components/P2Content.vue'
+import axios from 'axios';
+import store from './store.js';
+
+axios.get('https://randomuser.me/api?results=50&nat=au&exc=login').then(response => {
+  store.commit('addUsers', response.data.results)
+});
 
 export default {
   name: 'app',
