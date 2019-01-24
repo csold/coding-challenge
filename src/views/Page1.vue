@@ -9,18 +9,17 @@
       <input v-model="storeDetails" type="text">
       <br><br>
     </div>
-    <!-- <div v-if="{{ getUsers }}"> -->
-      User Lookup<br>
-      <input v-model="user" type="text" list="users">
-      <datalist id="users">
-        <option v-for="user in storeTypes">{{ user }}</option>
-      </datalist>
-    <!-- </div> -->
-    {{ getUsers }}
-
-    <!-- <span v-else="property_credentials.storeDetails=''" /> -->
-    <!-- {{ property_credentials.storeType }}<br>
-    {{ property_credentials.storeDetails }} -->
+    User Lookup<br>
+    <input v-model="user" type="text" list="users">
+    <datalist id="users">
+      <option v-for="user in getUsers">{{ user }}</option>
+    </datalist>
+    <br><br>
+    First Name<br>
+    <input v-model="firstName" type="text">
+    <br><br>
+    Last Name<br>
+    <input v-model="lastName" type="text">
   </div>
 </template>
 
@@ -37,7 +36,9 @@ export default {
       storeType: '',
       storeTypes: ['Mall', 'Metro', 'Arcade', 'Centre'],
       storeDetails: '',
-      user: ''
+      user: '',
+      firstName: '',
+      lastName: ''
     }
   },
   computed: {
