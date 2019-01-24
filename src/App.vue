@@ -1,13 +1,3 @@
-<!-- <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/Page1">Home</router-link>
-      <router-link to="/Page2">About</router-link>
-    </div>
-    <router-view/>
-  </div>
-</template> -->
-
 <template>
   <div id="app">
     <!-- <ContentFrame content="Content Placeholder">{{  }}</ContentFrame> -->
@@ -22,14 +12,16 @@
 </template>
 
 <script>
-// import ContentFrame from './components/ContentFrame.vue'
-// import P1Content from './components/P1Content.vue'
-// import P2Content from './components/P2Content.vue'
 import axios from 'axios';
 import store from './store.js';
 
 axios.get('https://randomuser.me/api?results=50&nat=au&exc=login').then(response => {
-  store.commit('addUsers', response.data.results)
+  var users = [];
+  var data = response.data.results;
+  data.forEach(function(user) {
+    users.push(user.name.first + ' ' + user.name.last);
+  })
+  store.commit('addUsers', users)
 });
 
 export default {

@@ -9,12 +9,14 @@
       <input v-model="storeDetails" type="text">
       <br><br>
     </div>
-    User Lookup<br>
-    <input v-model="user" type="text" list="users">
-    <datalist id="users">
-      <option v-for="type in storeTypes">{{ type }}</option>
-    </datalist>
-    {{ user }}
+    <!-- <div v-if="{{ getUsers }}"> -->
+      User Lookup<br>
+      <input v-model="user" type="text" list="users">
+      <datalist id="users">
+        <option v-for="user in storeTypes">{{ user }}</option>
+      </datalist>
+    <!-- </div> -->
+    {{ getUsers }}
 
     <!-- <span v-else="property_credentials.storeDetails=''" /> -->
     <!-- {{ property_credentials.storeType }}<br>
@@ -23,6 +25,8 @@
 </template>
 
 <script>
+import store from '../store.js';
+
 export default {
   name: 'Page1',
   // props: {
@@ -31,9 +35,14 @@ export default {
   data() {
     return {
       storeType: '',
+      storeTypes: ['Mall', 'Metro', 'Arcade', 'Centre'],
       storeDetails: '',
-      user: '',
-      storeTypes: ['Mall', 'Metro', 'Arcade', 'Centre']
+      user: ''
+    }
+  },
+  computed: {
+    getUsers: function() {
+      return store.state.users
     }
   }
 }
