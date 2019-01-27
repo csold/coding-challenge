@@ -1,7 +1,7 @@
 
 TO DO
 
-Separate user object into first and last name
 Figure out navigation
   Submit values to store (router link on click)
   Populate values from store (on mount)
+Fields must be populated before moving to page2

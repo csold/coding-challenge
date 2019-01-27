@@ -1,12 +1,12 @@
 <template>
   <div class='content'>
     Store Type<br>
-    <select v-model="storeType">
+    <select v-model="userData.storeType">
       <option v-for="type in storeTypes">{{ type }}</option>
     </select><br><br>
-    <div v-if="storeType=='Metro'">
+    <div v-if="userData.storeType=='Metro'">
       Provide Details<br>
-      <input v-model="storeDetails" type="text">
+      <input v-model="userData.storeDetails" type="text">
       <br><br>
     </div>
     User Lookup<br>
@@ -16,10 +16,10 @@
     </datalist>
     <br><br>
     First Name<br>
-    <input v-model="firstName" type="text">
+    <input v-model="userData.firstName" type="text">
     <br><br>
     Last Name<br>
-    <input v-model="lastName" type="text">
+    <input v-model="userData.lastName" type="text">
   </div>
 </template>
 
@@ -28,18 +28,17 @@ import store from '../store.js';
 
 export default {
   name: 'Page1',
-  // props: {
-  //   content: String
-  // },
   data() {
     return {
-      storeType: null,
       storeTypes: ['Mall', 'Metro', 'Arcade', 'Centre'],
-      storeDetails: null,
       user: null,
-      firstName: null,
-      lastName: null
-      // change: {val: null, model: null, modelCopy: null}
+      userData: {
+        storeType: null,
+        storeDetails: null,
+        user: null,
+        firstName: null,
+        lastName: null
+      }
     }
   },
   computed: {
@@ -49,9 +48,16 @@ export default {
   },
   watch: {
     user: function(val, oldVal) {
-      this.firstName = val.split(' ')[0]
-      this.lastName = val.split(' ')[1]
+      this.userData.firstName = val.split(' ')[0]
+      this.userData.lastName = val.split(' ')[1]
     }
+  },
+  mounted() {
+    this.user = store.state.user
+    this.userData = store.state.page1Data
+  },
+  beforeDestroy() {
+    store.commit('storePage1Data', this.userData)
   }
 }
 </script>
