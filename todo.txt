@@ -1,7 +1,5 @@
 
 TO DO
 
-Figure out navigation
-  Submit values to store (router link on click)
-  Populate values from store (on mount)
-Fields must be populated before moving to page2
+Reactive conditional rendering on 'Next' button
+First name and last name fields editable

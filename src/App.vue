@@ -5,7 +5,8 @@
       <router-view class='content' />
       <div class='nav-buttons'>
         <router-link class='button' to="/">Back</router-link>
-        <router-link class='button' to="/Page2">Next</router-link>
+        <router-link v-if="checkPage1" class='button' to="/Page2">Next</router-link>
+        <div v-else class="button">Next</div>
       </div>
     </div>
   </div>
@@ -17,6 +18,11 @@ import store from './store.js';
 
 export default {
   name: 'app',
+  computed: {
+    checkPage1: function() {
+      return store.state.checkPage1
+    }
+  },
   mounted() {
     // Get user list from API and commit to vuex store
     axios.get('https://randomuser.me/api?results=50&nat=au&exc=login').then(response => {
@@ -33,6 +39,9 @@ export default {
       store.commit('addUsers', users)
     });
   }
+  // watch: {
+  //
+  // }
 }
 </script>
 

@@ -10,7 +10,7 @@
       <br><br>
     </div>
     User Lookup<br>
-    <input v-model="user" type="text" list="users">
+    <input v-model="userData.user" type="text" list="users">
     <datalist id="users"> <!-- Not supported on Safari -->
       <option v-for="user in getUsers">{{ user }}</option>
     </datalist>
@@ -31,7 +31,6 @@ export default {
   data() {
     return {
       storeTypes: ['Mall', 'Metro', 'Arcade', 'Centre'],
-      user: null,
       userData: {
         storeType: null,
         storeDetails: null,
@@ -47,13 +46,18 @@ export default {
     }
   },
   watch: {
-    user: function(val, oldVal) {
-      this.userData.firstName = val.split(' ')[0]
-      this.userData.lastName = val.split(' ')[1]
+    userData: {
+      handler: function(val) {
+        if (val.user) {
+          this.userData.firstName = val.user.split(' ')[0]
+          this.userData.lastName = val.user.split(' ')[1]
+        }
+        store.commit('checkPage1', Boolean(val.storeType && val.user &&
+          val.firstName && val.lastName))
+      }, deep: true
     }
   },
   mounted() {
-    this.user = store.state.user
     this.userData = store.state.page1Data
   },
   beforeDestroy() {
