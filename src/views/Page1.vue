@@ -11,7 +11,7 @@
     </div>
     User Lookup<br>
     <input v-model="user" type="text" list="users">
-    <datalist id="users">
+    <datalist id="users"> <!-- Not supported on Safari -->
       <option v-for="user in getUsers">{{ user }}</option>
     </datalist>
     <br><br>
@@ -33,17 +33,24 @@ export default {
   // },
   data() {
     return {
-      storeType: '',
+      storeType: null,
       storeTypes: ['Mall', 'Metro', 'Arcade', 'Centre'],
-      storeDetails: '',
-      user: '',
-      firstName: '',
-      lastName: ''
+      storeDetails: null,
+      user: null,
+      firstName: null,
+      lastName: null
+      // change: {val: null, model: null, modelCopy: null}
     }
   },
   computed: {
     getUsers: function() {
       return store.state.users
+    }
+  },
+  watch: {
+    user: function(val, oldVal) {
+      this.firstName = val.split(' ')[0]
+      this.lastName = val.split(' ')[1]
     }
   }
 }

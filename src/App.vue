@@ -19,8 +19,13 @@ import store from './store.js';
 axios.get('https://randomuser.me/api?results=50&nat=au&exc=login').then(response => {
   var users = [];
   var data = response.data.results;
+  // Capitalise names from API
+  function capitalise(name) {
+    return name.charAt(0).toUpperCase() + name.substring(1, name.length)
+  }
+  // Populate users array and add to vuex store
   data.forEach(function(user) {
-    users.push(user.name.first + ' ' + user.name.last);
+    users.push(capitalise(user.name.first)+' '+capitalise(user.name.last));
   })
   store.commit('addUsers', users)
 });
