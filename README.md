@@ -1,14 +1,17 @@
 # coding-challenge
 
 ## Project setup
-Install vue cli and libraries according to https://cli.vuejs.org/guide/installation.html
+Clone the repo and install vue cli and libraries following https://cli.vuejs.org/guide/installation.html
 ```
+git clone https://github.com/csold/coding-challenge.git
+cd coding-challenge
+
 npm install -g @vue/cli
 npm install -g @vue/cli-service-global
 npm install --save vue-router vuex axios
 ```
 
-### Compiles and hot-reloads for development
+### Compiling and hot-reloading for development
 ```
 cd src
 vue serve
