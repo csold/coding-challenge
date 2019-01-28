@@ -1,5 +1,5 @@
 
 TO DO
 
-Reactive conditional rendering on 'Next' button
+Use forms for entering data
 First name and last name fields editable

@@ -4,9 +4,14 @@
     <div class='box'>
       <router-view class='content' />
       <div class='nav-buttons'>
-        <router-link class='button' to="/">Back</router-link>
-        <router-link v-if="checkPage1" class='button' to="/Page2">Next</router-link>
-        <div v-else class="button">Next</div>
+        <div v-if="$route.path=='/'" class="button greyed-out">Back</div>
+        <router-link v-else class='button' to="/">Back</router-link>
+
+        <div v-if="checkPage2 && $route.path=='/Page2'" class='button'
+          v-on:click="submitData">Send</div>
+        <div v-else-if="$route.path=='/Page2'" class="button greyed-out">Send</div>
+        <router-link v-else-if="checkPage1" class='button' to="/Page2">Next</router-link>
+        <div v-else class="button greyed-out">Next</div>
       </div>
     </div>
   </div>
@@ -19,8 +24,19 @@ import store from './store.js';
 export default {
   name: 'app',
   computed: {
-    checkPage1: function() {
-      return store.state.checkPage1
+    checkPage1() {
+      return store.state.page1Populated
+    },
+    checkPage2() {
+      return store.state.page2Populated
+    }
+  },
+  methods: {
+    submitData() {
+      axios.post('https://webhook.site/70a62bfd-8b40-4048-8c38-51be74700507', {
+        page1Data: store.state.page1Data,
+        page1Data: store.state.page2Data
+      })
     }
   },
   mounted() {
@@ -74,6 +90,11 @@ export default {
     margin: 20px;
     text-align: center;
     display: inline;
-    text-decoration: none
+    text-decoration: none;
+    color: black;
+  }
+  .greyed-out {
+    border: 1px solid DarkGray;
+    color: DarkGray;
   }
 </style>

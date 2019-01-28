@@ -13,7 +13,14 @@ export default new Vuex.Store({
       firstName: null,
       lastName: null
     },
-    page1Populated: false
+    page2Data: {
+      userRole: null,
+      joinDate: null,
+      inVictoria: null,
+      location: null
+    },
+    page1Populated: false,
+    page2Populated: false
   },
   mutations: {
     addUsers(state, data) {
@@ -22,8 +29,14 @@ export default new Vuex.Store({
     storePage1Data(state, data) {
       state.page1Data = data
     },
+    storePage2Data(state, data) {
+      state.page2Data = data
+    },
     checkPage1(state, data) {
       state.page1Populated = data
+    },
+    checkPage2(state, data) {
+      state.page2Populated = data
       console.log(data)
     }
   },

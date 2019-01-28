@@ -41,7 +41,7 @@ export default {
     }
   },
   computed: {
-    getUsers: function() {
+    getUsers() {
       return store.state.users
     }
   },
@@ -52,8 +52,14 @@ export default {
           this.userData.firstName = val.user.split(' ')[0]
           this.userData.lastName = val.user.split(' ')[1]
         }
-        store.commit('checkPage1', Boolean(val.storeType && val.user &&
-          val.firstName && val.lastName))
+        // Check if required fields populated
+        if (val.storeType=='Metro') {
+          store.commit('checkPage1', Boolean(val.storeType && val.storeDetails
+            && val.user && val.firstName && val.lastName))
+        } else {
+          store.commit('checkPage1', Boolean(val.storeType && val.user &&
+            val.firstName && val.lastName))
+        }
       }, deep: true
     }
   },
