@@ -73,9 +73,5 @@ export default {
 </script>
 
 <style scoped>
-.test {
-  background-color: red;
-  height: 20px;
-  width: 20px;
-}
+
 </style>

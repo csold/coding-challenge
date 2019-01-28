@@ -4,9 +4,10 @@
     <div class='box'>
       <router-view class='content' />
       <div class='nav-buttons'>
+        <!-- Conditionals for back button -->
         <div v-if="$route.path=='/'" class="button greyed-out">Back</div>
         <router-link v-else class='button' to="/">Back</router-link>
-
+        <!-- Conditionals for next/Send button -->
         <div v-if="checkPage2 && $route.path=='/Page2'" class='button'
           v-on:click="submitData">Send</div>
         <div v-else-if="$route.path=='/Page2'" class="button greyed-out">Send</div>
@@ -55,9 +56,6 @@ export default {
       store.commit('addUsers', users)
     });
   }
-  // watch: {
-  //
-  // }
 }
 </script>
 
